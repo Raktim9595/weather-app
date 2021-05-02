@@ -7,7 +7,7 @@ const geoCode = require("./src/geoCode.js");
 const foreCast = require("./src/foreCast.js");
 
 const app = express();
-const port = 80;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -88,14 +88,6 @@ app.get("/help/*", (req, res) => {
     res.render("error", {
         page_title: "error",
         err_message: "help page is not found",
-    });
-});
-
-app.get("/api", (req, res) => {
-    res.send({
-        forecast: "it is 35 and feels like 35",
-        location: "Butwal, Lumbini, Nepal",
-        addres: "Butwal"
     });
 });
 
